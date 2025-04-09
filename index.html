@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <img src="./immages/bg.jpg" class="h-screen w-screen object-cover fixed -z-10">
     <nav>
         <div class="bg-gradient-to-l p-4 flex justify-between backdrop-blur-2xl">
             <h1 id="name" class="text-4xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent animate-gradient-x pl-4">
@@ -48,7 +47,7 @@
     </div>
 
     <div class="h-screen w-[96vw] flex items-center justify-center">
-        <div class=" flex items-center justify-center h-[50%] w-[80%] justify-self-end">
+        <div class=" flex flex-col md:flex-row items-center justify-center h-[50%] w-[80%] justify-self-end">
             <div class="w-[60%] backdrop-blur-3xl flex items-center justify-center flex-col">
                 <div class="borderani h-[190px] w-[190px] rounded-full flex items-center justify-center">
                     <img id="profile" src="./immages/profile.jpg" class=" hover:cursor-pointer profile h-[180px] w-[180px] rounded-full">
@@ -56,8 +55,8 @@
                 <h1 class="text-6xl font-extrabold text-center bg-gradient-to-r from-blue-900 via-[#C0C0C0] to-green-500 animate-gradient-x">Portfolio of <br>AashishAdhikari<br></h1>
                 <h1 class="text-3xl text-white">--Tech Enthusiast</h1>
             </div>
-            <div class="overflow-hidden">
-                <div id="profilecontent" class="hidden shadow-2xl hover:flex slide overflow-clip h-[600px] w-[600px] bg-white flex-col justify-center items-center text-3xl rounded-xl">
+            <div class="md:overflow-hidden">
+                <div id="profilecontent" class="hidden shadow-2xl hover:flex slide overflow-clip container h-[600px] w-[650px] bg-white flex-col justify-center items-center text-3xl rounded-xl">
                     <div class="h-fit w-full flex justify-center">
                         <div class="borderani2 h-[190px] w-[190px] rounded-full flex items-center justify-center">
                             <img class="h-[180px] w-[180px] rounded-full" src="./immages/profile.jpg">
@@ -81,7 +80,7 @@
         <section id="education">
             <div data-aos="fade-right" class="h-1 w-[80%] mb-4 bg-black rounded-full justify-self-center"></div>
             <div data-aos="fade-up" class="grid grid-cols-3 gap-x-10">
-                <div class="row-span-3 text-4xl font-extrabold text-lime-600 justify-self-center self-center">
+                <div class="row-span-3 text-3xl md:text-4xl font-extrabold text-lime-600 justify-self-center self-center">
                     <h1>Education</h1>
                 </div>
                 <div class="bg-gray-700 block md:flex h-fit col-span-2 scrollani gap-5 text-2xl">
@@ -199,7 +198,13 @@
         const profile = document.getElementById("profile");
         const profilecontent = document.getElementById("profilecontent");
         profile.onclick = function(){
-            profilecontent.classList.toggle("hidden");
+            if(window.innerWidth<600){
+                profilecontent.classList.add("hidden")
+            }
+            else{
+                profilecontent.classList.toggle("hidden");
+
+            }
         }
     </script>
 </body>
