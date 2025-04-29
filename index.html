@@ -3,184 +3,390 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Aashish Adhikari - Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="./input.css">
     <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Custom animations */
+        .animate-gradient-x {
+            background-size: 200% auto;
+            animation: gradient-x 5s linear infinite;
+        }
+
+        @keyframes gradient-x {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        .slide-h {
+            animation: slide-in-h 0.5s ease-in-out;
+        }
+
+        @keyframes slide-in-h {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .revslide {
+            animation: revslide 1s ease-in-out;
+        }
+
+        @keyframes revslide {
+            from { transform: translateX(0); }
+            to { transform: translateX(100%); }
+        }
+
+        .borderani {
+            border: 2px solid;
+            animation: borderani 3s linear infinite;
+        }
+
+        @keyframes borderani {
+            0% { border-color: #f00; }
+            25% { border-color: #0f0; }
+            50% { border-color: #00f; }
+            75% { border-color: #ff0; }
+            100% { border-color: #f00; }
+        }
+
+        .borderani2 {
+            border: 2px solid;
+            animation: borderani2 3s linear infinite;
+        }
+
+        @keyframes borderani2 {
+            0% { border-color: #f00; }
+            25% { border-color: #0f0; }
+            50% { border-color: #00f; }
+            75% { border-color: #ff0; }
+            100% { border-color: #f00; }
+        }
+
+        /* Menu animation */
+        .change .div1 {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        
+        .change .div2 {
+            opacity: 0;
+        }
+        
+        .change .div3 {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Responsive background */
+        body {
+            background: linear-gradient(135deg, #1a1c20 0%, #2c3e50 100%);
+            min-height: 100vh;
+            color: #f8f9fa;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 <body>
-    <nav>
-        <div class="bg-gradient-to-l p-4 flex justify-between backdrop-blur-2xl">
-            <h1 id="name" class="text-4xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent animate-gradient-x pl-4">
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-50 backdrop-filter backdrop-blur-lg bg-opacity-70 bg-gray-900 shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 id="name" class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent animate-gradient-x">
                 Portfolio
             </h1>
-            <div class="w-[70%]">
-                <ul>
-                    <div>
-                        <div id="ham-menu" class="flex flex-col gap-1 md:hidden justify-self-end items-center mt-2 hover:cursor-pointer">
-                            <div class="div1 block w-6 h-1 bg-white rounded"></div>
-                            <div class="div2 block w-6 h-1 bg-white rounded"></div>
-                            <div class="div3 block w-6 h-1 bg-white rounded"></div>
-                        </div>
-                    </div>
-                    <div id="navLinks" class="hidden mt-2 md:flex md:justify-evenly transition-all duration-50 overflow-clip">
-                        <li id="socials" class="text-2xl text-white hover:underline hover:text-green-300 cursor-pointer transition-all duration-300">Socials</li>
-                        <li class="text-2xl text-white hover:underline hover:text-green-300 cursor-pointer transition-all duration-300"><a href="#education">Education</a></li>
-                        <li class="text-2xl text-white hover:underline hover:text-green-300 cursor-pointer transition-all duration-300"><a href="#skills">Skills</a></li>
-                    </div>
+            <div>
+                <div id="ham-menu" class="flex flex-col gap-1 md:hidden cursor-pointer p-2">
+                    <div class="div1 w-6 h-1 bg-white rounded transition-all duration-300"></div>
+                    <div class="div2 w-6 h-1 bg-white rounded transition-all duration-300"></div>
+                    <div class="div3 w-6 h-1 bg-white rounded transition-all duration-300"></div>
+                </div>
+                <ul id="navLinks" class="hidden md:flex md:space-x-8">
+                    <li id="socials" class="text-lg text-white hover:text-green-300 cursor-pointer transition-all duration-300 px-3 py-2 rounded-lg hover:bg-gray-800">Socials</li>
+                    <li class="text-lg text-white hover:text-green-300 cursor-pointer transition-all duration-300 px-3 py-2 rounded-lg hover:bg-gray-800">
+                        <a href="#education">Education</a>
+                    </li>
+                    <li class="text-lg text-white hover:text-green-300 cursor-pointer transition-all duration-300 px-3 py-2 rounded-lg hover:bg-gray-800">
+                        <a href="./dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="text-lg text-white hover:text-green-300 cursor-pointer transition-all duration-300 px-3 py-2 rounded-lg hover:bg-gray-800">
+                        <a href="#skills">Skills</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div id="socialDiv" class="justify-end mr-5 hidden">
-        
-        <div id="socialDiv2" class="fixed gap-6 top-[20%] flex flex-col justify-evenly slide-h mt-5 text-4xl text-white bg-black w-12 py-20 rounded-3xl items-center">
-            <div class=" hover:bg-blue-600 text-center rounded-r-2xl transition-bg duration-300">
-            <div><i class="fa-brands fa-instagram h-10 w-12"></i></div>
-            </div>
-            <div class="hover:bg-blue-600 text-center rounded-r-2xl transition-bg duration-300"><i class="fa-brands fa-facebook-f h-10 w-12"></i></div>
-            <div class="hover:bg-blue-600 text-center rounded-r-2xl transition-bg duration-300"><i class="fa-solid fa-envelope h-10 w-12"></i></div>
-            <div class="hover:bg-blue-600 text-center rounded-r-2xl transition-bg duration-300"><i class="fa-solid fa-phone h-10 w-12"></i></div>
+    <!-- Social Media Sidebar -->
+    <div id="socialDiv" class="fixed top-0 right-0 z-40 hidden h-screen flex items-center justify-end">
+        <div id="socialDiv2" class="flex flex-col gap-8 bg-black p-4 rounded-l-xl shadow-2xl slide-h">
+            <a id="insta-link" href="https://www.instagram.com/adaashish12/" target="_blank" class="hover:bg-blue-600 p-3 rounded-full transition-all duration-300 text-center">
+                <i class="fa-brands fa-instagram text-2xl"></i>
+                <span class="hidden" id="insta-username">adaashish12</span>
+            </a>
+            <a id="fb-link" href="https://www.facebook.com/aashish.adhikari.2025" target="_blank" class="hover:bg-blue-600 p-3 rounded-full transition-all duration-300 text-center">
+                <i class="fa-brands fa-facebook-f text-2xl"></i>
+                <span class="hidden" id="fb-username">aashish</span>
+            </a>
+            <a id="email-link" href="mailto:aashi69425@gmail.com" class="hover:bg-blue-600 p-3 rounded-full transition-all duration-300 text-center">
+                <i class="fa-solid fa-envelope text-2xl"></i>
+                <span class="hidden" id="email">aashi69425@gmail.com</span>
+            </a>
+            <a id="phone-link" href="tel:9765989610" class="hover:bg-blue-600 p-3 rounded-full transition-all duration-300 text-center">
+                <i class="fa-solid fa-phone text-2xl"></i>
+                <span class="hidden" id="phone-number">9765989610</span>
+            </a>
         </div>
     </div>
 
-    <div class="h-screen w-[96vw] flex items-center justify-center">
-        <div class=" flex flex-col md:flex-row items-center justify-center h-[50%] w-[80%] justify-self-end">
-            <div class="w-[60%] backdrop-blur-3xl flex items-center justify-center flex-col">
-                <div class="borderani h-[190px] w-[190px] rounded-full flex items-center justify-center">
-                    <img id="profile" src="./immages/profile.jpg" class=" hover:cursor-pointer profile h-[180px] w-[180px] rounded-full">
+    <!-- Hero Section -->
+    <section class="container mx-auto px-4 py-16 md:py-24 min-h-screen flex items-center">
+        <div class="w-full flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
+            <!-- Profile Card -->
+            <div class="w-full md:w-1/2 flex flex-col items-center">
+                <div class="borderani rounded-full p-2 mb-6">
+                    <img id="profile" src="./immages/profile.jpg" alt="Aashish Adhikari" 
+                        class="h-40 w-40 md:h-48 md:w-48 rounded-full object-cover hover:cursor-pointer transition-transform duration-300 hover:scale-105">
                 </div>
-                <h1 class="text-6xl font-extrabold text-center bg-gradient-to-r from-blue-900 via-[#C0C0C0] to-green-500 animate-gradient-x">Portfolio of <br>AashishAdhikari<br></h1>
-                <h1 class="text-3xl text-white">--Tech Enthusiast</h1>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-center bg-gradient-to-r from-blue-400 via-purple-500 to-green-400 bg-clip-text text-transparent animate-gradient-x mb-4">
+                    Aashish Adhikari
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300">— Tech Enthusiast —</p>
             </div>
-            <div class="md:overflow-hidden">
-                <div id="profilecontent" class="hidden shadow-2xl hover:flex slide overflow-clip container h-[600px] w-[650px] bg-white flex-col justify-center items-center text-3xl rounded-xl">
-                    <div class="h-fit w-full flex justify-center">
-                        <div class="borderani2 h-[190px] w-[190px] rounded-full flex items-center justify-center">
-                            <img class="h-[180px] w-[180px] rounded-full" src="./immages/profile.jpg">
+            
+            <!-- Profile Details Card -->
+            <div class="w-full md:w-1/2">
+                <div id="profilecontent" class="hidden shadow-2xl overflow-hidden bg-gray-800 bg-opacity-80 rounded-xl p-6 backdrop-filter backdrop-blur-sm border border-gray-700">
+                    <div class="flex justify-center mb-6">
+                        <div class="borderani2 rounded-full p-2">
+                            <img class="h-32 w-32 rounded-full object-cover" src="./immages/profile.jpg" alt="Aashish Adhikari">
                         </div>
                     </div>
-                    <div class="h-1 w-[80%] bg-gray-800 my-6 justify-self-center slide"></div>
-                    <div class="w-[90%] justify-self-end flex flex-col gap-2">
-                        <div><label>Name: AashishAdhikari<br></label></div>
-                        <div><label>Grade: 12<br></label></div>
-                        <div><label>Age: 16<br></label></div>
-                        <div><label>Contact: 9765989610<br></label></div>
-                        <div><label>Skills: Python developer, Full Stack developer<br></label></div>
-                        <div><label>Frameworks: TailwindCSS, Django, React</label></div>
+                    <div class="h-1 w-full bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 my-6"></div>
+                    <div class="space-y-4 text-lg">
+                        <div class="flex flex-col md:flex-row md:items-center">
+                            <span class="font-bold text-purple-300 w-24">Name:</span>
+                            <span class="text-gray-200">Aashish Adhikari</span>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-center">
+                            <span class="font-bold text-purple-300 w-24">Grade:</span>
+                            <span class="text-gray-200">12</span>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-center">
+                            <span class="font-bold text-purple-300 w-24">Age:</span>
+                            <span class="text-gray-200">16</span>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-center">
+                            <span class="font-bold text-purple-300 w-24">Contact:</span>
+                            <span class="text-gray-200">9765989610</span>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-center">
+                            <span class="font-bold text-purple-300 w-24">Skills:</span>
+                            <span class="text-gray-200">Python developer, Full Stack developer</span>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-center">
+                            <span class="font-bold text-purple-300 w-24">Frameworks:</span>
+                            <span class="text-gray-200 pl-5">TailwindCSS, Django, React</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="main">
-        <section id="education">
-            <div data-aos="fade-right" class="h-1 w-[80%] mb-4 bg-black rounded-full justify-self-center"></div>
-            <div data-aos="fade-up" class="grid grid-cols-3 gap-x-10">
-                <div class="row-span-3 text-3xl md:text-4xl font-extrabold text-lime-600 justify-self-center self-center">
-                    <h1>Education</h1>
+    <!-- Education Section -->
+    <section id="education" class="container mx-auto px-4 py-16 md:py-24">
+        <div class="mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-lime-500 mb-4">Education</h2>
+            <div class="h-1 w-24 bg-lime-500 mx-auto rounded-full"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- First School -->
+            <div data-aos="fade-right" data-aos-duration="1000" class="bg-gray-800 bg-opacity-70 rounded-xl p-6 shadow-lg flex flex-col md:flex-row gap-6 items-center hover:transform hover:scale-105 transition-all duration-300 border border-gray-700">
+                <div class="flex-shrink-0">
+                    <img src="./immages/school.jpg" alt="National Model English Secondary School" class="h-32 w-32 rounded-full object-cover border-4 border-lime-500">
                 </div>
-                <div class="bg-gray-700 block md:flex h-fit col-span-2 scrollani gap-5 text-2xl">
-                    <div><img src="./immages/school.jpg" class="h-[100%] rounded-full justify-self-center"></div>
-                    <div class="flex flex-col justify-center">
-                        <div><label class="font-bold text-3xl text-center">National Model English Secondary School<br></label></div>
-                        <div><label>Studied PreSchool, Primary School, Middle School</label></div>
+                <div>
+                    <h3 class="text-xl md:text-2xl font-bold mb-2 text-lime-400">National Model English Secondary School</h3>
+                    <p class="text-gray-300">Studied PreSchool, Primary School, Middle School</p>
+                </div>
+            </div>
+            
+            <!-- Second School -->
+            <div data-aos="fade-left" data-aos-duration="1000" class="bg-gray-800 bg-opacity-70 rounded-xl p-6 shadow-lg flex flex-col md:flex-row gap-6 items-center hover:transform hover:scale-105 transition-all duration-300 border border-gray-700">
+                <div class="flex-shrink-0">
+                    <img src="./immages/college.png" alt="Xavier International School" class="h-32 w-32 rounded-full object-cover border-4 border-lime-500">
+                </div>
+                <div>
+                    <h3 class="text-xl md:text-2xl font-bold mb-2 text-lime-400">Xavier International School</h3>
+                    <p class="text-gray-300">Studied HighSchool</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="container mx-auto px-4 py-16 md:py-24 mb-16">
+        <div class="mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-lime-500 mb-4">Skills</h2>
+            <div class="h-1 w-24 bg-lime-500 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="space-y-12">
+            <!-- Languages -->
+            <div data-aos="fade-up" data-aos-duration="1000" class="bg-gray-800 bg-opacity-70 rounded-xl p-8 shadow-lg border border-gray-700">
+                <h3 class="text-2xl md:text-3xl font-bold mb-6 text-center md:text-left">
+                    <span class="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">Programming Languages</span>
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Python -->
+                    <div class="p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition-all duration-300">
+                        <div class="flex items-center mb-2">
+                            <i class="fa-brands fa-python text-3xl text-blue-400 mr-3"></i>
+                            <h4 class="text-xl font-bold text-yellow-400">Python</h4>
+                        </div>
+                        <p class="text-gray-300">Python is a popular, easy-to-learn programming language used to build websites, apps, games, and even artificial intelligence. It's great for beginners and powerful enough for professionals!</p>
                     </div>
-                </div>
-                <div data-aos="fade-left" class="h-1 w-[100%] bg-white rounded-full justify-self-center col-span-2"></div>
-                <div class="bg-gray-700 h-fit col-span-2 block md:flex gap-5 scrollani text-2xl">
-                    <div><img src="./immages/college.png" class="h-[140px] rounded-full justify-self-center self-center"></div>
-                    <div class="flex flex-col justify-center">
-                        <div><label class="font-bold text-3xl text-center">Xavier International School<br></label></div>
-                        <div><label>Studied HighSchool</label></div>
+                    
+                    <!-- HTML -->
+                    <div class="p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition-all duration-300">
+                        <div class="flex items-center mb-2">
+                            <i class="fa-brands fa-html5 text-3xl text-orange-400 mr-3"></i>
+                            <h4 class="text-xl font-bold text-orange-400">HTML</h4>
+                        </div>
+                        <p class="text-gray-300">HTML is the standard language to create and structure content on the web.</p>
+                    </div>
+                    
+                    <!-- CSS -->
+                    <div class="p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition-all duration-300">
+                        <div class="flex items-center mb-2">
+                            <i class="fa-brands fa-css3-alt text-3xl text-blue-400 mr-3"></i>
+                            <h4 class="text-xl font-bold text-blue-400">CSS</h4>
+                        </div>
+                        <p class="text-gray-300">CSS is a language used to style and design the layout of web pages.</p>
+                    </div>
+                    
+                    <!-- JavaScript -->
+                    <div class="p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition-all duration-300">
+                        <div class="flex items-center mb-2">
+                            <i class="fa-brands fa-js text-3xl text-yellow-400 mr-3"></i>
+                            <h4 class="text-xl font-bold text-yellow-400">JavaScript</h4>
+                        </div>
+                        <p class="text-gray-300">JavaScript makes web pages interactive and dynamic.</p>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <section id="skills">
-            <div class="h-1 w-[80%] mb-4 bg-black rounded-full justify-self-center m-4"></div>
-            <div data-aos="fade-up" class="grid grid-cols-3">
-                <div class="row-span-3 text-4xl font-extrabold text-lime-700 justify-self-center self-center">Skills</div>
-                <div data-aos="fade-up" class="text-4xl font-bold pl-4 col-span-2 bg-gray-600">
-                    <div><label>LANGUAGES</label></div>
-                    <br>
-                    <div><i class="fa-brands fa-python text-blue-400"></i><label class="text-yellow-400">Python:</label></div>
-                    <div><label class="scrollani text-2xl font-normal">Python is a popular, easy-to-learn programming language used to build websites, apps, games, and even artificial intelligence. It's great for beginners and powerful enough for professionals!<br></label></div>
-
-                    <div><i class="fa-brands fa-html5 text-orange-400"></i><label class="text-orange-400">HTML:</label></div>
-                    <div><label class="scrollani text-2xl font-normal">HTML is the standard language to create and structure content on the web.<br></label></div>
-
-                    <div><i class="fa-brands fa-css3-alt text-blue-400"></i><label class="text-blue-400">CSS:</label></div>
-                    <div><label class="scrollani text-2xl font-normal">CSS is a language used to style and design the layout of web pages.<br></label></div>
-
-                    <div><i class="fa-brands fa-js text-yellow-400"></i><label class="text-yellow-400">JavaScript:</label></div>
-                    <div><label class="scrollani text-2xl font-normal">JavaScript makes web pages interactive and dynamic.</label></div>
-                </div>
-
-                <div class="h-1 w-[100%] bg-white rounded-full justify-self-center col-span-2"></div>
-
-                <div data-aos="fade-up" class="text-4xl font-bold scrollani pl-4 col-span-2 bg-gray-600">
-                    <div><label>Frameworks & Libraries:<br></label></div>
-
-                    <div><img src="./immages/tailwind.png" class="h-8 float-left mt-2"><label class="text-blue-300">Tailwind:</label></div>
-                    <div><label class="text-2xl font-normal">Tailwind CSS is a utility-first CSS framework for custom UIs.<br></label></div>
-
-                    <div><i class="fa-brands fa-react animate-spin [animation-duration:3s] font-normal text-blue-600"></i><label class="text-blue-600">ReactJs:</label></div>
-                    <div><label class="text-2xl font-normal">React.js is used to build dynamic user interfaces using reusable components.<br></label></div>
-
-                    <div><i class="fa-brands fa-node text-green-400"></i><label class="text-green-400">NodeJs:</label></div>
-                    <div><label class="text-2xl font-normal">Node.js lets you run JavaScript outside the browser, usually for backend work.<br></label></div>
-
-                    <div><img src="./immages/django.png" class="h-10 float-left"><label class="bg-green-950 text-white">Django:</label></div>
-                    <div><label class="text-2xl font-normal">Django is a high-level Python framework for building secure and scalable apps.<br></label></div>
-
-                    <div><img src="./immages/Flask.png" class="bg-white h-10 float-left"><label class="bg-white text-black">Flask:</label></div>
-                    <div><label class="text-2xl font-normal">Flask is a minimal Python web framework with lots of flexibility.</label></div>
+            
+            <!-- Frameworks & Libraries -->
+            <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" class="bg-gray-800 bg-opacity-70 rounded-xl p-8 shadow-lg border border-gray-700">
+                <h3 class="text-2xl md:text-3xl font-bold mb-6 text-center md:text-left">
+                    <span class="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">Frameworks & Libraries</span>
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Tailwind -->
+                    <div class="p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition-all duration-300">
+                        <div class="flex items-center mb-2">
+                            <img src="./immages/tailwind.png" alt="Tailwind CSS" class="h-8 w-8 mr-3">
+                            <h4 class="text-xl font-bold text-blue-300">Tailwind</h4>
+                        </div>
+                        <p class="text-gray-300">Tailwind CSS is a utility-first CSS framework for custom UIs.</p>
+                    </div>
+                    
+                    <!-- React -->
+                    <div class="p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition-all duration-300">
+                        <div class="flex items-center mb-2">
+                            <i class="fa-brands fa-react text-3xl text-blue-600 mr-3 animate-spin [animation-duration:3s]"></i>
+                            <h4 class="text-xl font-bold text-blue-600">React.js</h4>
+                        </div>
+                        <p class="text-gray-300">React.js is used to build dynamic user interfaces using reusable components.</p>
+                    </div>
+                    
+                    <!-- Node.js -->
+                    <div class="p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition-all duration-300">
+                        <div class="flex items-center mb-2">
+                            <i class="fa-brands fa-node text-3xl text-green-400 mr-3"></i>
+                            <h4 class="text-xl font-bold text-green-400">Node.js</h4>
+                        </div>
+                        <p class="text-gray-300">Node.js lets you run JavaScript outside the browser, usually for backend work.</p>
+                    </div>
+                    
+                    <!-- Django -->
+                    <div class="p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition-all duration-300">
+                        <div class="flex items-center mb-2">
+                            <img src="./immages/django.png" alt="Django" class="h-8 w-8 mr-3">
+                            <h4 class="text-xl font-bold bg-green-950 text-white px-2 py-1 rounded">Django</h4>
+                        </div>
+                        <p class="text-gray-300">Django is a high-level Python framework for building secure and scalable apps.</p>
+                    </div>
+                    
+                    <!-- Flask -->
+                    <div class="p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition-all duration-300 col-span-full md:col-span-1">
+                        <div class="flex items-center mb-2">
+                            <img src="./immages/Flask.png" alt="Flask" class="h-8 w-8 mr-3 bg-white p-1 rounded">
+                            <h4 class="text-xl font-bold bg-white text-black px-2 py-1 rounded">Flask</h4>
+                        </div>
+                        <p class="text-gray-300">Flask is a minimal Python web framework with lots of flexibility.</p>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-400">&copy; 2025 Aashish Adhikari. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification for Social Links -->
+    <div id="toast" class="fixed bottom-4 right-4 hidden bg-gray-800 text-white px-6 py-4 rounded-lg shadow-lg transition-all duration-300 transform translate-y-10 opacity-0 z-50">
+        <div id="toast-message" class="font-medium"></div>
     </div>
 
+    <!-- Scripts -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>AOS.init();</script>
-
     <script>
+        // Initialize AOS library
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Navigation menu toggle
         const ham_menu = document.getElementById("ham-menu");
         const navLinks = document.getElementById("navLinks");
         const name = document.getElementById("name");
-
         let isOpen = false;
 
-        ham_menu.onclick = function () {
+        ham_menu.onclick = function() {
             ham_menu.classList.toggle("change");
             if (!isOpen) {
-                navLinks.classList.remove("ani1");
                 navLinks.classList.remove("hidden");
-                navLinks.classList.add("ani");
-                name.classList.add("hidden");
+                navLinks.classList.add("fixed", "inset-x-0", "top-16", "bg-gray-900", "p-4", "flex", "flex-col", "space-y-4", "shadow-lg", "animate-fade-in");
             } else {
-                navLinks.classList.remove("ani");
-                navLinks.classList.add("ani1");
                 setTimeout(() => {
                     navLinks.classList.add("hidden");
-                }, 500);
-                name.classList.remove("hidden");
+                }, 300);
+                navLinks.classList.remove("fixed", "animate-fade-in");
+                navLinks.classList.add("animate-fade-out");
             }
             isOpen = !isOpen;
         };
 
+        // Social sidebar toggle
         const socials = document.getElementById("socials");
         const socialDiv = document.getElementById("socialDiv");
         const socialDiv2 = document.getElementById("socialDiv2");
         let on = true;
 
-        socials.onclick = function () {
+        socials.onclick = function() {
             if (on) {
-                socials.textContent = "X";
+                socials.textContent = "Close";
                 socialDiv2.classList.remove("revslide");
                 socialDiv.classList.remove("hidden");
                 socialDiv.classList.add("flex");
@@ -195,17 +401,90 @@
                 on = true;
             }
         };
+
+        // Profile card toggle
         const profile = document.getElementById("profile");
         const profilecontent = document.getElementById("profilecontent");
-        profile.onclick = function(){
-            if(window.innerWidth<600){
-                profilecontent.classList.add("hidden")
-            }
-            else{
-                profilecontent.classList.toggle("hidden");
-
+        
+        profile.onclick = function() {
+            if (window.innerWidth < 600) {
+                if (profilecontent.classList.contains("hidden")) {
+                    profilecontent.classList.remove("hidden");
+                    profilecontent.classList.add("block", "animate-fade-in");
+                } else {
+                    profilecontent.classList.add("hidden");
+                    profilecontent.classList.remove("block", "animate-fade-in");
+                }
+            } else {
+                if (profilecontent.classList.contains("hidden")) {
+                    profilecontent.classList.remove("hidden");
+                    profilecontent.classList.add("block", "animate-fade-in");
+                } else {
+                    profilecontent.classList.add("hidden");
+                    profilecontent.classList.remove("block", "animate-fade-in");
+                }
             }
         }
+
+        // Show toast notification
+        function showToast(message) {
+            const toast = document.getElementById("toast");
+            const toastMessage = document.getElementById("toast-message");
+            
+            toastMessage.textContent = message;
+            toast.classList.remove("hidden", "translate-y-10", "opacity-0");
+            toast.classList.add("translate-y-0", "opacity-100");
+            
+            setTimeout(() => {
+                toast.classList.add("translate-y-10", "opacity-0");
+                setTimeout(() => {
+                    toast.classList.add("hidden");
+                }, 300);
+            }, 3000);
+        }
+
+        // Social media link click handlers
+        document.getElementById("insta-link").addEventListener("click", function(e) {
+            showToast("Instagram: adaashish12");
+        });
+
+        document.getElementById("fb-link").addEventListener("click", function(e) {
+            showToast("Facebook: aashish");
+        });
+
+        document.getElementById("email-link").addEventListener("click", function(e) {
+            showToast("Email: aashi69425@gmail.com");
+        });
+
+        document.getElementById("phone-link").addEventListener("click", function(e) {
+            showToast("Phone: 9765989610");
+        });
+
+        // For Instagram username click (unnecessary but added for completeness)
+        document.getElementById("insta-username").addEventListener("click", function(e) {
+            e.stopPropagation();
+            window.open("https://www.instagram.com/adaashish12/", "_blank");
+        });
+
+        // Add fade-in animation keyframes
+        document.head.insertAdjacentHTML('beforeend', `
+            <style>
+                @keyframes fade-in {
+                    from { opacity: 0; transform: translateY(10px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+                @keyframes fade-out {
+                    from { opacity: 1; transform: translateY(0); }
+                    to { opacity: 0; transform: translateY(10px); }
+                }
+                .animate-fade-in {
+                    animation: fade-in 0.3s ease-out forwards;
+                }
+                .animate-fade-out {
+                    animation: fade-out 0.3s ease-out forwards;
+                }
+            </style>
+        `);
     </script>
 </body>
 </html>
