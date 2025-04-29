@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aashish Adhikari - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Custom animations */
+        .animate-gradient-x {
+            background-size: 200% auto;
+            animation: gradient-x 5s linear infinite;
+        }
+
+        @keyframes gradient-x {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        /* Dashboard specific styles */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Progress bar animation */
+        @keyframes progress {
+            0% { width: 0%; }
+            100% { width: var(--progress-width); }
+        }
+
+        .progress-bar {
+            animation: progress 1.5s ease-out forwards;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1c20 0%, #2c3e50 100%);
+            min-height: 100vh;
+            color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 backdrop-filter backdrop-blur-lg bg-opacity-70 bg-gray-900 shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent animate-gradient-x">
+                Dashboard
+            </h1>
+            <div>
+                <ul class="hidden md:flex md:space-x-8">
+                    <li class="text-lg text-white hover:text-green-300 cursor-pointer transition-all duration-300 px-3 py-2 rounded-lg hover:bg-gray-800">
+                        <a href="index.html">Portfolio</a>
+                    </li>
+                    <li class="text-lg text-white hover:text-green-300 cursor-pointer transition-all duration-300 px-3 py-2 rounded-lg hover:bg-gray-800">
+                        <a href="#skills">Skills</a>
+                    </li>
+                    <li class="text-lg text-white hover:text-green-300 cursor-pointer transition-all duration-300 px-3 py-2 rounded-lg hover:bg-gray-800">
+                        <a href="#projects">Projects</a>
+                    </li>
+                </ul>
+                <div id="ham-menu" class="flex flex-col gap-1 md:hidden cursor-pointer p-2">
+                    <div class="div1 w-6 h-1 bg-white rounded transition-all duration-300"></div>
+                    <div class="div2 w-6 h-1 bg-white rounded transition-all duration-300"></div>
+                    <div class="div3 w-6 h-1 bg-white rounded transition-all duration-300"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden fixed inset-0 z-40 bg-gray-900 bg-opacity-95 flex flex-col items-center justify-center space-y-8 text-2xl">
+        <a href="index.html" class="text-white hover:text-green-300 transition-colors duration-300">Portfolio</a>
+        <a href="#skills" class="text-white hover:text-green-300 transition-colors duration-300">Skills</a>
+        <a href="#projects" class="text-white hover:text-green-300 transition-colors duration-300">Projects</a>
+        <button id="close-menu" class="mt-8 text-gray-400 hover:text-white">
+            <i class="fa-solid fa-times text-3xl"></i>
+        </button>
+    </div>
+
+    <!-- Main Dashboard -->
+    <main class="container mx-auto px-4 py-12">
+        <!-- Profile Overview Section -->
+        <section class="mb-12">
+            <div data-aos="fade-up" class="bg-gray-800 bg-opacity-80 rounded-xl p-6 shadow-lg border border-gray-700">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="mb-6 md:mb-0 md:mr-8">
+                        <div class="relative">
+                            <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-500 rounded-full blur-sm animate-pulse"></div>
+                            <img src="./immages/profile.jpg" alt="Aashish Adhikari" class="relative h-48 w-48 rounded-full object-cover border-4 border-gray-700">
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-blue-400 via-purple-500 to-green-400 bg-clip-text text-transparent animate-gradient-x">
+                            Aashish Adhikari
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="bg-gray-700 p-2 rounded-full">
+                                    <i class="fa-solid fa-user text-green-400"></i>
+                                </div>
+                                <div>
+                                    <div class="text-gray-400 text-sm">Age</div>
+                                    <div class="text-lg font-medium">16</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="bg-gray-700 p-2 rounded-full">
+                                    <i class="fa-solid fa-graduation-cap text-blue-400"></i>
+                                </div>
+                                <div>
+                                    <div class="text-gray-400 text-sm">Grade</div>
+                                    <div class="text-lg font-medium">12</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="bg-gray-700 p-2 rounded-full">
+                                    <i class="fa-solid fa-briefcase text-purple-400"></i>
+                                </div>
+                                <div>
+                                    <div class="text-gray-400 text-sm">Experience</div>
+                                    <div class="text-lg font-medium">2 Years</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="bg-gray-700 p-2 rounded-full">
+                                    <i class="fa-solid fa-code text-pink-400"></i>
+                                </div>
+                                <div>
+                                    <div class="text-gray-400 text-sm">Occupation</div>
+                                    <div class="text-lg font-medium">Developer</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">Skills & Expertise</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Programming Languages -->
+                <div data-aos="fade-right" class="bg-gray-800 bg-opacity-80 rounded-xl p-6 shadow-lg border border-gray-700 card-hover">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fa-solid fa-code text-green-400 mr-3 text-2xl"></i>
+                        Programming Languages
+                    </h3>
+                    
+                    <div class="space-y-4">
+                        <!-- JavaScript -->
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium"><i class="fa-brands fa-js text-yellow-400 mr-2"></i> JavaScript</span>
+                                <span class="text-sm font-medium text-gray-400">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-yellow-400 h-2.5 rounded-full progress-bar" style="--progress-width: 90%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Python -->
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium"><i class="fa-brands fa-python text-blue-400 mr-2"></i> Python</span>
+                                <span class="text-sm font-medium text-gray-400">95%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-blue-500 h-2.5 rounded-full progress-bar" style="--progress-width: 95%"></div>
+                            </div>
+                        </div>
+
+                        <!-- HTML -->
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium"><i class="fa-brands fa-html5 text-orange-400 mr-2"></i> HTML</span>
+                                <span class="text-sm font-medium text-gray-400">95%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-orange-500 h-2.5 rounded-full progress-bar" style="--progress-width: 95%"></div>
+                            </div>
+                        </div>
+
+                        <!-- CSS -->
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium"><i class="fa-brands fa-css3-alt text-blue-400 mr-2"></i> CSS</span>
+                                <span class="text-sm font-medium text-gray-400">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-blue-400 h-2.5 rounded-full progress-bar" style="--progress-width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frameworks & Technologies -->
+                <div data-aos="fade-left" class="bg-gray-800 bg-opacity-80 rounded-xl p-6 shadow-lg border border-gray-700 card-hover">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fa-solid fa-layer-group text-purple-400 mr-3 text-2xl"></i>
+                        Frameworks & Technologies
+                    </h3>
+                    
+                    <div class="space-y-4">
+                        <!-- React -->
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium"><i class="fa-brands fa-react text-blue-400 mr-2"></i> React</span>
+                                <span class="text-sm font-medium text-gray-400">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-blue-400 h-2.5 rounded-full progress-bar" style="--progress-width: 85%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Node.js -->
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium"><i class="fa-brands fa-node-js text-green-500 mr-2"></i> Node.js</span>
+                                <span class="text-sm font-medium text-gray-400">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-green-500 h-2.5 rounded-full progress-bar" style="--progress-width: 80%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Django -->
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium"><i class="fa-solid fa-file-code text-emerald-500 mr-2"></i> Django</span>
+                                <span class="text-sm font-medium text-gray-400">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-emerald-500 h-2.5 rounded-full progress-bar" style="--progress-width: 90%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Flask -->
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium"><i class="fa-solid fa-flask text-gray-300 mr-2"></i> Flask</span>
+                                <span class="text-sm font-medium text-gray-400">95%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-gray-300 h-2.5 rounded-full progress-bar" style="--progress-width: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects & Experience Section -->
+        <section id="projects" class="mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent">Projects & Experience</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- MERN Stack Projects -->
+                <div data-aos="fade-up" data-aos-delay="100" class="bg-gray-800 bg-opacity-80 rounded-xl p-6 shadow-lg border border-gray-700 card-hover">
+                    <div class="bg-blue-500 bg-opacity-20 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
+                        <i class="fa-brands fa-react text-blue-400 text-2xl animate-spin [animation-duration:3s]"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">MERN Stack</h3>
+                    <p class="text-gray-400 mb-4">2 years experience developing full-stack web applications with MongoDB, Express, React, and Node.js.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-700 text-xs font-medium px-2.5 py-0.5 rounded">React</span>
+                        <span class="bg-gray-700 text-xs font-medium px-2.5 py-0.5 rounded">MongoDB</span>
+                        <span class="bg-gray-700 text-xs font-medium px-2.5 py-0.5 rounded">Express</span>
+                        <span class="bg-gray-700 text-xs font-medium px-2.5 py-0.5 rounded">Node.js</span>
+                    </div>
+                </div>
+
+                <!-- Django Projects -->
+                <div data-aos="fade-up" data-aos-delay="200" class="bg-gray-800 bg-opacity-80 rounded-xl p-6 shadow-lg border border-gray-700 card-hover">
+                    <div class="bg-green-500 bg-opacity-20 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-file-code text-emerald-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Django Development</h3>
+                    <p class="text-gray-400 mb-4">2 years experience building secure, scalable web applications with the Django framework.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-700 text-xs font-medium px-2.5 py-0.5 rounded">Django</span>
+                        <span class="bg-gray-700 text-xs font-medium px-2.5 py-0.5 rounded">Python</span>
+                        <span class="bg-gray-700 text-xs font-medium px-2.5 py-0.5 rounded">PostgreSQL</span>
+                        <span class="bg-gray-700 text-xs font-medium px-2.5 py-0.5 rounded">REST API</span>
+                    </div>
+                </div>
+
+                <!-- Flask Projects -->
+                <div data-aos="fade-up" data-aos-delay="300" class="bg-gray-800 bg-opacity-80 rounded-xl p-6 shadow-lg border border-gray-700 card-hover">
+                    <div class="bg-gray-500 bg-opacity-20 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-flask text-gray-300 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Flask Applications</h3>
+                    <p class="text-gray-400 mb-4">2 years experience developing lightweight web applications and REST APIs using Flask.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-700 text-xs font-medium px-2.5 py-0.5 rounded">Flask</span>
+                        <span class="bg-gray-700 text-xs font-medium px-2.5 py-0.5 rounded">Python</span>
+                        <span class="bg-gray-700 text-xs font-medium px-2.5 py-0.5 rounded">SQLAlchemy</span>
+                        <span class="bg-gray-700 text-xs font-medium px-2.5 py-0.5 rounded">Microservices</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics Section -->
+        <section class="mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-teal-500 bg-clip-text text-transparent">Statistics</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Projects Completed -->
+                <div data-aos="zoom-in" data-aos-delay="100" class="bg-gray-800 bg-opacity-80 rounded-xl p-6 shadow-lg border border-gray-700 card-hover text-center">
+                    <div class="inline-flex bg-blue-500 bg-opacity-20 p-4 rounded-full mb-4">
+                        <i class="fa-solid fa-code-branch text-blue-400 text-3xl"></i>
+                    </div>
+                    <h3 class="text-4xl font-bold">15+</h3>
+                    <p class="text-gray-400">Projects Completed</p>
+                </div>
+
+                <!-- Years Experience -->
+                <div data-aos="zoom-in" data-aos-delay="200" class="bg-gray-800 bg-opacity-80 rounded-xl p-6 shadow-lg border border-gray-700 card-hover text-center">
+                    <div class="inline-flex bg-green-500 bg-opacity-20 p-4 rounded-full mb-4">
+                        <i class="fa-solid fa-calendar text-green-400 text-3xl"></i>
+                    </div>
+                    <h3 class="text-4xl font-bold">2</h3>
+                    <p class="text-gray-400">Years Experience</p>
+                </div>
+
+                <!-- Certificates -->
+                <div data-aos="zoom-in" data-aos-delay="300" class="bg-gray-800 bg-opacity-80 rounded-xl p-6 shadow-lg border border-gray-700 card-hover text-center">
+                    <div class="inline-flex bg-yellow-500 bg-opacity-20 p-4 rounded-full mb-4">
+                        <i class="fa-solid fa-certificate text-yellow-400 text-3xl"></i>
+                    </div>
+                    <h3 class="text-4xl font-bold">2+</h3>
+                    <p class="text-gray-400">Certificates</p>
+                </div>
+
+                <!-- Technologies -->
+                <div data-aos="zoom-in" data-aos-delay="400" class="bg-gray-800 bg-opacity-80 rounded-xl p-6 shadow-lg border border-gray-700 card-hover text-center">
+                    <div class="inline-flex bg-purple-500 bg-opacity-20 p-4 rounded-full mb-4">
+                        <i class="fa-solid fa-microchip text-purple-400 text-3xl"></i>
+                    </div>
+                    <h3 class="text-4xl font-bold">5+</h3>
+                    <p class="text-gray-400">Technologies</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-400">&copy; 2025 Aashish Adhikari. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Initialize AOS library
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Mobile menu toggle
+        const hamMenu = document.getElementById("ham-menu");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const closeMenu = document.getElementById("close-menu");
+
+        hamMenu.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+            hamMenu.classList.toggle("change");
+        });
+
+        closeMenu.addEventListener("click", () => {
+            mobileMenu.classList.add("hidden");
+            hamMenu.classList.remove("change");
+        });
+
+        // Add mobile menu change class for animation
+        document.head.insertAdjacentHTML('beforeend', `
+            <style>
+                .change .div1 {
+                    transform: rotate(-45deg) translate(-5px, 6px);
+                }
+                
+                .change .div2 {
+                    opacity: 0;
+                }
+                
+                .change .div3 {
+                    transform: rotate(45deg) translate(-5px, -6px);
+                }
+            </style>
+        `);
+    </script>
+</body>
+</html>
